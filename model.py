@@ -14,8 +14,6 @@ class Model:
         self.shaders = self.load_shaders()
         self.vao = self.get_vao()
 
-        self.render()
-
     def get_vertex_data(self):
         return numpy.array(self.vertices).astype("f4")
     

@@ -3,8 +3,14 @@ from utils.final import *
 import pygame
 
 class Scene(metaclass=NoOverrideMeta):
+    @final
     def __init__(self, window):
         self.window = window
+        self.on_init()
+
+    def on_init(self): ...
+
+    def draw(self): ...
 
     @final
     def run(self):
@@ -15,11 +21,3 @@ class Scene(metaclass=NoOverrideMeta):
 
         pygame.display.flip()
         self.window.clock.tick(60)
-
-    def draw(self): ...
-
-class HUD():
-    def __init__(self, window):
-        self.window = window
-
-    def draw(self): ...
