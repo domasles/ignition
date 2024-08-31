@@ -8,16 +8,13 @@ class Scene(metaclass=NoOverrideMeta):
 
     @final
     def run(self):
-        while True:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.window.close()
+        self.window.check_events()
 
-            self.window.fill((0, 0, 0))
-            self.draw()
+        self.window.fill((0, 0, 0))
+        self.draw()
 
-            pygame.display.flip()
-            self.window.clock.tick(60)
+        pygame.display.flip()
+        self.window.clock.tick(60)
 
     def draw(self): ...
 

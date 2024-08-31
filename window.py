@@ -22,6 +22,11 @@ class Window:
         color = (color[0] / 255, color[1] / 255, color[2] / 255)
         self.ctx.clear(color=color)
 
+    def check_events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.close()
+
     def close(self):
         pygame.quit()
         sys.exit()
