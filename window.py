@@ -1,3 +1,5 @@
+from model import Model
+
 import pygame, sys, moderngl
 
 class Window:
@@ -28,5 +30,6 @@ class Window:
                 self.close()
 
     def close(self):
+        Model.destroy_all()
         pygame.quit()
         sys.exit()

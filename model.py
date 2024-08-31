@@ -1,6 +1,8 @@
 import numpy
 
 class Model:
+    _instances = []
+
     def __init__(self, window, vertices, vertex_shader, fragment_shader):
         self.window = window
         self.ctx = window.ctx
@@ -13,6 +15,8 @@ class Model:
         self.vbo = self.get_vbo()
         self.shaders = self.load_shaders()
         self.vao = self.get_vao()
+
+        Model._instances.append(self)
 
     def get_vertex_data(self):
         return numpy.array(self.vertices).astype("f4")
@@ -39,3 +43,10 @@ class Model:
         self.vbo.release()
         self.shaders.release()
         self.vao.release()
+
+    @classmethod
+    def destroy_all(cls):
+        for instance in cls._instances:
+            instance.destroy()
+
+        cls._instances.clear()
