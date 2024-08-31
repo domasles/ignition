@@ -19,6 +19,7 @@ class Window:
         self.clock = pygame.time.Clock()
 
     def fill(self, color):
+        color = (color[0] / 255, color[1] / 255, color[2] / 255)
         self.ctx.clear(color=color)
 
     def close(self):
