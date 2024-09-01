@@ -1,16 +1,22 @@
+from utils.config import SHADERS_DIR
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from window import Window
+
 import numpy
 
 class Model:
     _instances = []
 
-    def __init__(self, window, vertices, vertex_shader, fragment_shader):
+    def __init__(self, window: "Window", vertices: list, vertex_shader: str=None, fragment_shader: str=None):
         self.window = window
         self.ctx = window.ctx
 
         self.vertices = vertices
-
-        self.vertex_shader = vertex_shader
-        self.fragment_shader = fragment_shader
+        
+        self.vertex_shader = f"{SHADERS_DIR}/default.vert" if vertex_shader == None else vertex_shader
+        self.fragment_shader = f"{SHADERS_DIR}/default.frag" if fragment_shader == None else fragment_shader
 
         self.vbo = self.get_vbo()
         self.shaders = self.load_shaders()
