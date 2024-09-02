@@ -68,10 +68,6 @@ class Model:
         return glm.mat4()
     
     def render(self):
-        if self.space == "scene":
-            self.model_matrix = glm.rotate(self.model_matrix, self.window.time, glm.vec3(0, 1, 0))
-            self.shaders["model_matrix"].write(self.model_matrix)
-
         self.vao.render()
 
     def destroy(self):
