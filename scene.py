@@ -1,4 +1,3 @@
-from utils.config import SHADERS_DIR
 from typing import TYPE_CHECKING
 from utils.final import *
 
@@ -11,9 +10,6 @@ class Scene(metaclass=NoOverrideMeta):
     @final
     def __init__(self, window: "Window"):
         self.window = window
-        self.vertex_shader = f"{SHADERS_DIR}/default_scene.vert"
-        self.fragment_shader = f"{SHADERS_DIR}/default_scene.frag"
-
         self.on_init()
 
     def on_init(self): ...

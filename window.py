@@ -17,7 +17,7 @@ class Window:
         pygame.display.gl_set_attribute(pygame.GL_CONTEXT_MINOR_VERSION, 6)
         pygame.display.gl_set_attribute(pygame.GL_CONTEXT_PROFILE_MASK, pygame.GL_CONTEXT_PROFILE_CORE)
 
-        self.screen = pygame.display.set_mode((width, height), pygame.OPENGL | pygame.DOUBLEBUF | pygame.RESIZABLE if self.resizable else 0)
+        self.screen = pygame.display.set_mode((width, height), pygame.OPENGL | pygame.DOUBLEBUF | (pygame.RESIZABLE if self.resizable else 0))
         self.ctx = moderngl.create_context()
 
         self.clock = pygame.time.Clock()
@@ -25,6 +25,7 @@ class Window:
     def fill(self, color: tuple):
         color = (color[0] / 255, color[1] / 255, color[2] / 255)
         self.ctx.clear(color=color)
+
 
     def check_events(self):
         for event in pygame.event.get():
